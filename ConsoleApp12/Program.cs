@@ -1,7 +1,6 @@
 ﻿using Bogus;
 using ConsoleApp12;
-using CsvHelper;
-using System.Globalization;
+using ConsoleApp12.FakeService;
 
 string FormatNumber(string number)
 {
@@ -17,17 +16,16 @@ string FormatNumber(string number)
 //                .Generate(5);
 
 
-var csvList = new Faker<CSVExport>("pt_BR")
-              .RuleFor(c => c.AssetID, f => FormatNumber(f.Phone.PhoneNumberFormat()))
-              .RuleFor(c => c.TypeID, f => f.Random.Int(1, 4))
-              .RuleFor(c => c.OfferID, f => f.Random.Int(100, 800))
-              .RuleFor(c => c.Valor, f => Math.Round(f.Random.Decimal(0.25m, 99.99m), 2))
-              .Generate(3_000_000);
+//var csvList = new Faker<CSVExport>("pt_BR")
+//              .RuleFor(c => c.AssetID, f => FormatNumber(f.Phone.PhoneNumberFormat()))
+//              .RuleFor(c => c.TypeID, f => f.Random.Int(1, 4))
+//              .RuleFor(c => c.OfferID, f => f.Random.Int(100, 800))
+//              .RuleFor(c => c.Valor, f => Math.Round(f.Random.Decimal(0.25m, 99.99m), 2))
+//              .Generate(1_000_000);
 
-using (var writer = new StreamWriter(@"C:\bulk\file.csv"))
-using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-{
-    csv.WriteRecords(csvList); 
-}
+//BuildFIles.GenerateCSV(csvList);
+//BuildFIles.GenerateTXT(csvList);
 
+var massa = MarketingListFakeService.GerarMassa();
+BuildFIles.GenerateTXT(massa);
 Console.ReadLine();
