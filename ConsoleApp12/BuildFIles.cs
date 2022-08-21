@@ -15,6 +15,7 @@ namespace ConsoleApp12
         public static void GenerateTXT(List<CSVExport> list)
         {
             using StreamWriter outputFile = new StreamWriter(@"C:\bulk\file.txt");
+            outputFile.WriteLine($"AssetID,TypeID,OfferID,Valor");
             foreach (var line in list)
                 outputFile.WriteLine($"{line.AssetID},{line.TypeID},{line.OfferID},{line.Valor.ToString().Replace(",", ".")}");
         }
