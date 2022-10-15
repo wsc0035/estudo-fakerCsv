@@ -12,7 +12,7 @@ namespace ConsoleApp12.FakeService
             decimal discountAcc = 0.1m;
             var csvList = new List<CSVExport>();
 
-            while (totalList < 1_000_001)
+            while (totalList < 3_000_000)
             {
                 string gsm = GerarGsmValid();
                 while (index < 3)

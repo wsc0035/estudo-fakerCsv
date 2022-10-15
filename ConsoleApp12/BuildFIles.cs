@@ -7,14 +7,14 @@ namespace ConsoleApp12
     {
         public static void GenerateCSV(List<CSVExport> list)
         {
-            using var writer = new StreamWriter(@"C:\bulk\file.csv");
+            using var writer = new StreamWriter(@"C:\bulk\file3.csv");
             using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
             csv.WriteRecords(list);
         }
 
         public static void GenerateTXT(List<CSVExport> list)
         {
-            using StreamWriter outputFile = new StreamWriter(@"C:\bulk\file.txt");
+            using StreamWriter outputFile = new StreamWriter(@"C:\bulk\file3.txt");
             outputFile.WriteLine($"AssetID,TypeID,OfferID,Valor");
             foreach (var line in list)
                 outputFile.WriteLine($"{line.AssetID},{line.TypeID},{line.OfferID},{line.Valor.ToString().Replace(",", ".")}");
